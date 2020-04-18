@@ -4,11 +4,15 @@ from .generic import GenericCommandsMixin
 from .hash import HashCommandsMixin
 from .list import ListCommandsMixin
 from .set import SetCommandsMixin
+from .sorted_set import SortedSetCommandsMixin
 
 __all__ = ['MockRedis']
 
 
-class MockRedis(GenericCommandsMixin, HashCommandsMixin, ListCommandsMixin, SetCommandsMixin):
+class MockRedis(
+    GenericCommandsMixin,
+    HashCommandsMixin, ListCommandsMixin, SetCommandsMixin, SortedSetCommandsMixin,
+):
     """Fake high-level aioredis.Redis interface"""
 
     def __init__(self, connection=None, encoding=None, **kwargs):
